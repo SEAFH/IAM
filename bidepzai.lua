@@ -14,6 +14,19 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Remotes = ReplicatedStorage:WaitForChild("Remotes")
 local CommF_Remote = Remotes:WaitForChild("CommF_")
 
+local executor = "Unknown"
+
+pcall(function()
+    executor = identifyexecutor() or getexecutorname() or "Unknown"
+end)
+
+executor = tostring(executor):lower()
+
+if executor:find("xeno") or executor:find("jjsploit") or executor:find("solara") then
+    game.Players.LocalPlayer:Kick("Unsupported Executor")
+    return
+end
+
 -- PLAYER
 local Player = Players.LocalPlayer
 local PlayerGui = Player:WaitForChild("PlayerGui", 5)
